@@ -46,10 +46,10 @@ export const addLeads = (lead) => dispatch => {
             display: true
         }
         dispatch({
-            type:GET_ERRORS,
-            payload:error
-        }
-    )
+                type: GET_ERRORS,
+                payload: error
+            }
+        )
 
     })
 }
