@@ -1,34 +1,34 @@
 import {ADD_LEADS, DELETE_LEADS, GET_LEADS} from "../actions/types";
 
-const initialState ={
-    leads:[]
+const initialState = {
+    leads: []
 }
 
-export default (state=initialState, action)=>{
-    switch (action.type){
+export default (state = initialState, action) => {
+    switch (action.type) {
         case GET_LEADS:
-            return{
+            return {
                 ...state,
                 leads: action.payload
             }
 
         case DELETE_LEADS:
 
-            return{
+            return {
                 ...state,
                 leads: state.leads.filter(lead => lead.id !== action.payload)
             }
 
         case ADD_LEADS:
-            return{
+            return {
                 ...state,
                 leads: [...state.leads, action.payload]
             }
 
 
-
-
         default:
-            return state
+            return{
+                ...state
+            }
     }
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
-import {ADD_LEADS, DELETE_LEADS, GET_LEADS} from "./types";
+import {ADD_LEADS, DELETE_LEADS, ERROR_DISPLAYED, GET_ERRORS, GET_LEADS} from "./types";
+import {type} from "@testing-library/user-event/dist/type";
 
 
 export const getLeads = () => dispatch => {
@@ -31,7 +32,7 @@ export const delLeads = (id) => dispatch => {
 
 
 export const addLeads = (lead) => dispatch => {
-    axios.post("/api/leads/",lead).then(
+    axios.post("/api/leads/", lead).then(
         res => {
             dispatch({
                 type: ADD_LEADS,
@@ -39,6 +40,18 @@ export const addLeads = (lead) => dispatch => {
             })
         }
     ).catch(err => {
-        console.log(err)
+        const error = {
+            msg: err.response.data,
+            status: err.response.status,
+            display: true
+        }
+        dispatch({
+            type:GET_ERRORS,
+            payload:error
+        }
+    )
+
     })
 }
+
+
