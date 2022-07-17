@@ -22,5 +22,6 @@ import leads
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', TemplateView.as_view(template_name='index.html')),
-    path('api/', include('leads.urls'))
+    path('', include('leads.urls')),
+    # path('api/', include('leads.urls'))
 ]
